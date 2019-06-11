@@ -9,8 +9,9 @@ import Home from '../Home/Home'
 const Navbar =()=>{
 return(
 <Div>
-<section className="container-fluid">
+<section className="">
 <nav className="navbar navbar-expand-sm navbar-dark bg-dark">
+<div className="container">
 <a className="navbar-brand" href="/">SAVVY</a>
 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navBar" aria-controls="navBar" aria-expanded="false" aria-label="Toggle-navigation">
 	<span className="navbar-toggler-icon"></span>
@@ -24,6 +25,7 @@ return(
 <Link to="/Signup" className="nav-link">Signup</Link>
 </li>
 </ul>
+</div>
 </div>
 </nav>
 

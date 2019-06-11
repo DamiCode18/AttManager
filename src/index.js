@@ -4,6 +4,7 @@ import {BrowserRouter} from 'react-router-dom'
 import Bootstrap from 'bootstrap'
 import 'bootstrap/dist/css/bootstrap.css'
 import './index.css';
+import './fontawesome-free-5.8.1-web/css/all.css'
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
