@@ -1,8 +1,9 @@
-import {createStore, combineReducers, compose} from 'redux'
-import firebase from 'firebase'
-import {reactReduxFirebase, firebaseReducer} from 'react-redux-firebase'
-import {reduxFirestore, firestoreReducer} from 'redux-firestore'
+import {createStore, combineReducers, compose} from 'redux';
+import firebase from 'firebase';
 import 'firebase/firestore';
+import {reactReduxFirebase, firebaseReducer} from 'react-redux-firebase';
+import {reduxFirestore, firestoreReducer} from 'redux-firestore';
+
 
 // Initialize firebase
 const Config = {
@@ -12,7 +13,7 @@ const Config = {
   projectId: "attmanager-51f98",
   storageBucket: "attmanager-51f98.appspot.com",
   messagingSenderId: "69135384541",
-  appId: "1:69135384541:web:2b325a11024e423f"
+  // appId: "1:69135384541:web:2b325a11024e423f"
 };
 
 // react-redux-firebase config

@@ -1,8 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {BrowserRouter} from 'react-router-dom'
-import Bootstrap from 'bootstrap'
 import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap/dist/js/bootstrap.min';
+import $ from 'jquery';
+import Popper from 'popper.js';
 import './index.css';
 import './fontawesome-free-5.8.1-web/css/all.css'
 import App from './App';

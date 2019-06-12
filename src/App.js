@@ -1,16 +1,20 @@
-import React from 'react';
+import React, {Component} from 'react';
 import './App.css';
 import Navbar from './Component/Navbar/Navbar'
 import Home from './Component/Home/Home'
+import Login from './Component/Login/Login'
+import Signup from './Component/Signup/Signup'
+import User from './Component/User/User'
 import Div from './Component/HOC/Div'
-import {Link, Switch, Route} from 'react-router-dom'
-import {Provider} from 'react-redux'
-import store from './store'
+import {Switch, Route} from 'react-router-dom'
+// import {Provider} from 'react-redux'
+// import store from './store'
 
 
-function App() {
+class App extends Component {
+  render(){
   return (
-    <Provider store={store}>
+  
     <Div>
     <div className="App">
       <Navbar/>
@@ -22,10 +26,10 @@ function App() {
 
     </Switch>
     </Div>
-  </Provider>
+
   );
 }
-
+}
 export default App;
 
 

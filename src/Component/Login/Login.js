@@ -1,9 +1,11 @@
-import React, {Component, useState} from 'react'
+import React, {useState} from 'react'
 import Div from '../HOC/Div'
 import {Link, Switch, Route, withRouter} from 'react-router-dom'
 import './Login.css'
-import UserProfile from '../UserProfile/UserProfile'
-import firebase from 'firebase'
+import UserProfile from '../User/User'
+// import firebase from 'firebase'
+import { Redirect } from 'react-router-dom';
+import firebase from '../firebase'
 
 
 const Login =(props)=> {
@@ -13,16 +15,17 @@ const Login =(props)=> {
             <Div>
             
                     <div className="card logincard mb-3">
-                        <div className="card-header">Login</div>
+                        <div className="card-header"><i className="fas fa-lock mr-2"/>Login</div>
                         <div className="card-body">
 <form onSubmit={e=>e.preventDefault() && false}>
     <div className="form-group">
     <label htmlFor="email">Email*</label>
     <input value={email} onChange={e=>setEmail(e.target.value)}
     type="email"
+    autoFocus
     required 
     id="email"
-    className="form-control form-control-lg" 
+    className="form-control form-control" 
     name="email" 
     placeholder="Enter Your Email"/>
     </div>
@@ -32,7 +35,7 @@ const Login =(props)=> {
     type="password"
     required
     id="password" 
-    className="form-control form-control-lg" 
+    className="form-control form-control" 
     name="password" 
     placeholder="Enter Your Password"/>
     </div>
@@ -51,7 +54,7 @@ const Login =(props)=> {
         async function login(){
             try{
                 await firebase.login(email, password)
-                props.history.replace('/UseProfile')
+                props.history.replace('/User')
 
             } catch(error){
                 alert(error.message)
