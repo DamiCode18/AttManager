@@ -9,6 +9,7 @@ import Div from './Component/HOC/Div'
 import {Switch, Route} from 'react-router-dom'
 // import {Provider} from 'react-redux'
 // import store from './store'
+import {MuiThemeProvider, createMuiTheme} from '@material-ui/core/styles'
 
 
 class App extends Component {
