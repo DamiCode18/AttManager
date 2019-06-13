@@ -23,10 +23,10 @@ const Home =()=>{
              
 
             </section>
-<Switch>
+{/* <Switch>
 <Route exact path="/Login" component={Login}/>
 <Route exact path="/Signup" component={Signup}/>
-</Switch>
+</Switch> */}
         </Div>
 
     );

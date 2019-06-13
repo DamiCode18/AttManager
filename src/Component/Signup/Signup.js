@@ -1,76 +1,138 @@
 import React, {useState} from 'react'
 import './Signup.css'
-import Div from '../HOC/Div'
-import {Link, withRouter} from 'react-router-dom'
+// import {withRouter} from 'react-router-dom'
 // import * as moment from 'moment'
 // import firebase from 'firebase'
 import firebase from '../firebase'
+import Avatar from '@material-ui/core/Avatar';
+import Button from '@material-ui/core/Button';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import TextField from '@material-ui/core/TextField';
+// import Checkbox from '@material-ui/core/Checkbox';
+import Link from '@material-ui/core/Link';
+import Grid from '@material-ui/core/Grid';
+import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+import Typography from '@material-ui/core/Typography';
+import { makeStyles } from '@material-ui/core/styles';
+import Container from '@material-ui/core/Container';
 
-
-function Register(props) {
+const useStyles = makeStyles(theme => ({
+    '@global': {
+      body: {
+        backgroundColor: theme.palette.common.white,
+      },
+    },
+    paper: {
+      marginTop: theme.spacing(8),
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+    },
+    avatar: {
+      margin: theme.spacing(1),
+      backgroundColor: theme.palette.secondary.main,
+    },
+    form: {
+      width: '100%', // Fix IE 11 issue.
+      marginTop: theme.spacing(3),
+    },
+    submit: {
+      margin: theme.spacing(3, 0, 2),
+    },
+  }));
+  
+export default function SignUp(props) {
+    const classes = useStyles();
         const[email, setEmail] = useState('')
         const [firstname, setFirstname] = useState('')
         const [lastname, setLastname] = useState('')
         const [password, setPassword] = useState('')
 
         return(
-            <Div>
-
-            
-            <div className="card mb-3 signupcard">
-                <div className="card-header"><i className="fas fa-lock mr-2"/>Signup</div>
-                <div className="card-body">
-<form onSubmit={e=>e.preventDefault() && false}>
-<div className="form-group">
-<label htmlFor="email">Email*</label>
-<input value={email} onChange={e=>setEmail(e.target.value)}
-type="email"
-autoFocus
-required 
-className="form-control form-control-lg" 
-name="email" 
-placeholder="Enter Your Email"/>
-</div>
-<div className="form-group">
-<label htmlFor="name">Firstname*</label>
-<input value={firstname} onChange={e=>setFirstname(e.target.value)} 
-type="text" 
-required
-className="form-control form-control-lg" 
-name="name" 
-placeholder="Enter Your Firstname"/>
-</div>
-<div className="form-group">
-<label htmlFor="name">Lastname*</label>
-<input value={lastname} onChange={e=>setLastname(e.target.value)} 
-type="text" 
-required
-className="form-control form-control-lg" 
-name="name" 
-placeholder="Enter Your Lastname"/>
-</div>
-<div className="form-group">
-<label htmlFor="password">Password*</label>
-<input value={password} onChange={e=>setPassword(e.target.value)}
-type="password" 
-required
-className="form-control form-control-lg" 
-name="password" 
-placeholder="Enter Your Password"/>
-</div>
-<button type="submit" className="btn btn-primary" 
-onClick={onRegister}>SignUp</button>
-<div className="m-auto"><p>Already Have an Account!</p>
-    <Link to="/Login" className="btn btn-success signup"> Go Back To Login </Link>
-        </div>
-</form>
-
-                </div>
-
-            </div>
-
-
-            </Div>
+<Container component="main" maxWidth="xs">
+      <CssBaseline />
+      <div className={classes.paper}>
+        <Avatar className={classes.avatar}>
+          <LockOutlinedIcon />
+        </Avatar>
+        <Typography component="h1" variant="h5">
+          Sign up
+        </Typography>
+        <form
+        onSubmit={e=>e.preventDefault() && false}
+        className={classes.form} noValidate>
+          <Grid container spacing={2}>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                autoComplete="fname"
+                name="firstName"
+                variant="outlined"
+                required
+                fullWidth
+                id="firstName"
+                label="First Name"
+                autoFocus
+                value={firstname} onChange={e=>setFirstname(e.target.value)}
+              />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                variant="outlined"
+                required
+                fullWidth
+                id="lastName"
+                label="Last Name"
+                name="lastName"
+                autoComplete="lname"
+                value={lastname} onChange={e=>setLastname(e.target.value)}
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                variant="outlined"
+                required
+                fullWidth
+                id="email"
+                label="Email Address"
+                name="email"
+                autoComplete="email"
+                value={email} onChange={e=>setEmail(e.target.value)}
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                variant="outlined"
+                required
+                fullWidth
+                name="password"
+                label="Password"
+                type="password"
+                id="password"
+                autoComplete="current-password"
+                value={password} onChange={e=>setPassword(e.target.value)}
+              />
+            </Grid>
+          </Grid>
+          <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            color="primary"
+            className={classes.submit}
+            onClick={onRegister}
+          >
+            Sign Up
+          </Button>
+          <Grid container justify="flex-end">
+            <Grid item>
+              <Link href="/Login" variant="body2">
+                Already have an account? Sign in
+              </Link>
+            </Grid>
+          </Grid>
+        </form>
+      </div>
+    </Container>
         );
 
         async function onRegister(){
@@ -84,4 +146,3 @@ onClick={onRegister}>SignUp</button>
          
    } 
         }
-export default withRouter(Register);

@@ -1,7 +1,7 @@
 import React from 'react'
 import Div from '../HOC/Div'
 import './User.css'
-import {Link} from 'react-router-dom'
+// import {Link} from 'react-router-dom'
 
 
 const User =()=>{
