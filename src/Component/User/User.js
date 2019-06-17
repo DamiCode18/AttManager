@@ -1,6 +1,8 @@
 import React from 'react'
 import {Link, Switch, Route, withRouter} from 'react-router-dom'
+import Div from '../HOC/Div'
 import './User.css'
+import Navbar from '../Navbar/Navbar'
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper'
@@ -42,6 +44,7 @@ const useStyles = makeStyles(theme => ({
     
   
     return (
+        <Div>
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <Paper className={classes.paper}>
@@ -51,23 +54,23 @@ const useStyles = makeStyles(theme => ({
           <Typography component="h1" variant="h5">
             Welcome
           </Typography>
-            <form>
+            <form onSubmit={e=>e.preventDefault() && false}>
             <div>
                 <h3>
-                <label for="signin">Signin:</label>
-                <input id="signin" name="choice" type="radio"/>
+                <label for="signin">SignIn    <i className="fa fa-chevron-right fa-xs"></i></label>
+                <input className="ml-4" id="signin" name="choice" type="radio"/>
                 </h3>
             </div>
             <div>
                 <h3>
-                <label for="sigout">SignOut:</label>
-                <input id="signout" name="choice" type="radio"/>
+                <label for="sigout">SignOut  <i className="fa fa-chevron-right fa-xs"></i></label>
+                <input className="ml-2" id="signout" name="choice" type="radio"/>
                 </h3>
             </div>
             <div>
                 <h3>
-                <label for="leave">Take-Leave:</label>
-                <input id="leave" name="choice" type="radio"/>
+                <label for="leave">Leave    <i className="fa fa-chevron-right fa-xs"></i></label>
+                <input className="ml-4" id="leave" name="choice" type="radio"/>
                 </h3>
             </div>
             <Button
@@ -77,18 +80,27 @@ const useStyles = makeStyles(theme => ({
               color="primary"
               className={classes.submit}
               onClick={time}
+              id={props.id}
             >
               Go!
             </Button>
             </form>
   </Paper>
   </Container>
+  </Div>
   );
+
+
+       
+        
   function time(){
             var d = Date();
             var a = d.toString()
-            alert("User signIn Date and Time => " + a)
-  }
+               alert("User clicked button at => " + a);
+                console.log("User Date and Time => " + a);
+                
+            }
+            
  
 
 }
