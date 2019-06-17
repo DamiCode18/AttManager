@@ -1,0 +1,7 @@
+nav{
+    opacity: 0.9;
+}
+#toggle, .nav-link, #brand{
+    border: none;
+    outline: none;
+}

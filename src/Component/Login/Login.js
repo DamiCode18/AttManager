@@ -1,13 +1,14 @@
 import React, {useState} from 'react'
 // import Div from '../HOC/Div'
-// import {Switch, Route, withRouter} from 'react-router-dom'
+import {Switch, Route, withRouter} from 'react-router-dom'
 import './Login.css'
-import User from '../User/User'
+// import Home from '../Home/Home'
 // import firebase from 'firebase'
-import { Redirect } from 'react-router-dom';
+// import { Redirect } from 'react-router-dom';
 import firebase from '../firebase'
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
+import Paper from '@material-ui/core/Paper'
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
@@ -27,14 +28,14 @@ const useStyles = makeStyles(theme => ({
       },
     },
     paper: {
-      marginTop: theme.spacing(8),
+      marginTop: theme.spacing(15),
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
     },
     avatar: {
       margin: theme.spacing(1),
-      backgroundColor: theme.palette.secondary.main,
+      backgroundColor: theme.palette.primary.main,
     },
     form: {
       width: '100%', // Fix IE 11 issue.
@@ -45,15 +46,16 @@ const useStyles = makeStyles(theme => ({
     },
   }));
 
-  export default function SignIn(props) {
+      function SignIn(props) {
+    const classes = useStyles();
         const [email, setEmail] = useState('')
        const [password, setPassword] = useState('')
-    const classes = useStyles();
+    
   
     return (
       <Container component="main" maxWidth="xs">
         <CssBaseline />
-        <div className={classes.paper}>
+        <Paper className={classes.paper}>
           <Avatar className={classes.avatar}>
             <LockOutlinedIcon />
           </Avatar>
@@ -61,8 +63,9 @@ const useStyles = makeStyles(theme => ({
             Sign in
           </Typography>
           
-          <form className={classes.form} noValidate
-          onSubmit={e=>e.preventDefault() && false}>
+          <form 
+          onSubmit={e=>e.preventDefault() && false}
+          className={classes.form}>
             <TextField
               variant="outlined"
               margin="normal"
@@ -102,11 +105,6 @@ const useStyles = makeStyles(theme => ({
               Sign In
             </Button>
             <Grid container>
-              <Grid item xs>
-                <Link href="#" variant="body2">
-                  Forgot password?
-                </Link>
-              </Grid>
               <Grid item>
                 <Link href="/Signup" variant="body2">
                   {"Don't have an account? Sign Up"}
@@ -114,13 +112,13 @@ const useStyles = makeStyles(theme => ({
               </Grid>
             </Grid>
           </form>
-  </div>
+  </Paper>
   </Container>
   );
   async function login(){
     try{
         await firebase.login(email, password)
-        props.history.replace('/User')
+          props.history.replace('/User');
 
     } catch(error){
         alert(error.message)
@@ -130,4 +128,4 @@ const useStyles = makeStyles(theme => ({
 }
   }
 
-    
+export default withRouter(SignIn)

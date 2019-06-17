@@ -6,6 +6,7 @@ import './Signup.css'
 import firebase from '../firebase'
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
+import Paper from '@material-ui/core/Paper';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
 // import Checkbox from '@material-ui/core/Checkbox';
@@ -23,7 +24,7 @@ const useStyles = makeStyles(theme => ({
       },
     },
     paper: {
-      marginTop: theme.spacing(8),
+      marginTop: theme.spacing(12),
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
@@ -51,7 +52,7 @@ export default function SignUp(props) {
         return(
 <Container component="main" maxWidth="xs">
       <CssBaseline />
-      <div className={classes.paper}>
+      <Paper className={classes.paper}>
         <Avatar className={classes.avatar}>
           <LockOutlinedIcon />
         </Avatar>
@@ -60,7 +61,7 @@ export default function SignUp(props) {
         </Typography>
         <form
         onSubmit={e=>e.preventDefault() && false}
-        className={classes.form} noValidate>
+        className={classes.form}>
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
               <TextField
@@ -117,7 +118,7 @@ export default function SignUp(props) {
             type="submit"
             fullWidth
             variant="contained"
-            color="primary"
+            color="secondary"
             className={classes.submit}
             onClick={onRegister}
           >
@@ -131,17 +132,18 @@ export default function SignUp(props) {
             </Grid>
           </Grid>
         </form>
-      </div>
+      </Paper>
     </Container>
         );
 
         async function onRegister(){
          try{
              await firebase.register(email, firstname, lastname, password)
-         props.history.replace('/Login')
+
+         props.history.push('/Login')
          } catch(error){
              alert(error.message)
-             props.history.replace('/Signup')
+             props.history.push('/Signup')
          }   
          
    } 

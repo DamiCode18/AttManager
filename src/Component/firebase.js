@@ -9,7 +9,7 @@ const config = {
     projectId: "attmanager-51f98",
     storageBucket: "attmanager-51f98.appspot.com",
     messagingSenderId: "69135384541",
-    // appId: "1:69135384541:web:2b325a11024e423f"
+    appId: "1:69135384541:web:2b325a11024e423f"
   };
 
   class Firebase{
@@ -19,8 +19,11 @@ const config = {
           this.db = app.firestore()
       }
 
-      login(email, password){
-          return this.auth.signInWithEmailAndPassword(email, password)
+      async login(email, password, firstname, lastname){
+          await this.auth.signInWithEmailAndPassword(email, password)
+          return this.auth.currentUser.updateProfile({
+            displayName: firstname + " " + lastname 
+        })
       }
 
       logout(){
@@ -31,8 +34,13 @@ const config = {
           return this.auth.currentUser.updateProfile({
               displayName: firstname + " " + lastname 
           })
-
+        }
+       isInitialized(){
+           return new Promise(resolve=>{
+               this.auth.onAuthStateChanged(resolve)
+           })
+       }   
       }
-  }
+  
 
   export default new Firebase()

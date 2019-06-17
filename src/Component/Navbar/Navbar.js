@@ -4,16 +4,17 @@ import {Switch, Link, Route} from 'react-router-dom'
 import Login from '../Login/Login'
 import Signup from '../Signup/Signup'
 import Home from '../Home/Home'
+import './Navbar.css'
 
 
 const Navbar =()=>{
 return(
 <Div>
 <section className="">
-<nav className="navbar navbar-expand-sm navbar-dark bg-dark">
+<nav className="navbar navbar-expand-sm fixed-top navbar-dark bg-dark">
 <div className="container">
-<a className="navbar-brand" href="/">SAVVY</a>
-<button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navBar" aria-controls="navBar" aria-expanded="false" aria-label="Toggle-navigation">
+<a className="navbar-brand" id="brand" href="/">SAVVY</a>
+<button className="navbar-toggler" id="toggle" type="button" data-toggle="collapse" data-target="#navBar" aria-controls="navBar" aria-expanded="false" aria-label="Toggle-navigation">
 	<span className="navbar-toggler-icon"></span>
 </button>
 <div className="collapse navbar-collapse" id="navBar">
