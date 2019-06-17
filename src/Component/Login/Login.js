@@ -121,7 +121,7 @@ const useStyles = makeStyles(theme => ({
           props.history.replace('/User');
 
     } catch(error){
-        alert(error.message)
+        alert("Invalid Login Credentials!")
         props.history.replace('/Login')
     }
 

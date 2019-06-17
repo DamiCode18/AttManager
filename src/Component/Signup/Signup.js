@@ -142,7 +142,7 @@ export default function SignUp(props) {
 
          props.history.push('/Login')
          } catch(error){
-             alert(error.message)
+             alert("Invalid Signup! All input feilds required")
              props.history.push('/Signup')
          }   
          

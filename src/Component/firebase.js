@@ -39,7 +39,11 @@ const config = {
            return new Promise(resolve=>{
                this.auth.onAuthStateChanged(resolve)
            })
-       }   
+       }
+       
+       getCurrentUsername(){
+           return this.auth.currentUser.displayName
+       }
       }
   
 

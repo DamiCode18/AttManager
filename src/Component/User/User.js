@@ -2,7 +2,8 @@ import React from 'react'
 import {Link, Switch, Route, withRouter} from 'react-router-dom'
 import Div from '../HOC/Div'
 import './User.css'
-import Navbar from '../Navbar/Navbar'
+// import Navbar from '../Navbar/Navbar'
+import firebase from '../firebase'
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper'
@@ -42,7 +43,11 @@ const useStyles = makeStyles(theme => ({
       function User(props) {
     const classes = useStyles();
     
-  
+        if(!firebase.getCurrentUsername()){
+            alert("Please login first")
+            props.history.replace('/Login')
+            return null
+        }
     return (
         <Div>
       <Container component="main" maxWidth="xs">
@@ -52,7 +57,10 @@ const useStyles = makeStyles(theme => ({
             <VerifiedUserOutlined />
           </Avatar>
           <Typography component="h1" variant="h5">
-            Welcome
+            Welcome {firebase.getCurrentUsername()}
+          </Typography>
+          <Typography component="h1" variant="h5">
+            {/* Username: {displayName ? `"${displayName}"`: <CircularProgress/>} */}
           </Typography>
             <form onSubmit={e=>e.preventDefault() && false}>
             <div>
