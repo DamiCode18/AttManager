@@ -59,7 +59,43 @@ const useStyles = makeStyles(theme => ({
           <Typography component="h1" variant="h5">
             Welcome, {firebase.getCurrentUsername().toUpperCase()}
           </Typography>
-          <Button
+          <p id="signin"></p>
+          <p id="signout"></p>
+          <p id="leave"></p>
+          <p id="date"></p>
+            <form onSubmit={e=>e.preventDefault() && false}>
+            <Button
+              type="submit"
+              variant="contained"
+              color="primary"
+              className={classes.submit}
+              onClick={signInTime}
+              id="button"
+            >
+              Sign In
+            </Button>
+            <Button
+              type="submit"
+              variant="contained"
+              color="secondary"
+              className={classes.submit}
+              onClick={signOutTime}
+              id="button"
+            >
+              Sign Out
+            </Button>
+            <Button
+              type="submit"
+              variant="contained"
+              color="inherit"
+              className={classes.submit}
+              onClick={leaveTime}
+              id="button"
+            >
+              Leave
+            </Button>
+            </form>
+            <Button
               type="submit"
               fullWidth
               variant="contained"
@@ -69,40 +105,6 @@ const useStyles = makeStyles(theme => ({
             >
               Logout
             </Button>
-          {/* <Typography component="h1" variant="h5">
-            Username: {displayName ? `"${displayName}"`: <CircularProgress/>}
-          </Typography> */}
-            <form onSubmit={e=>e.preventDefault() && false}>
-            <div>
-                <h3>
-                <label for="signin">SignIn    <i className="fa fa-chevron-right fa-xs"></i></label>
-                <input className="ml-4" id="signin" name="choice" type="radio"/>
-                </h3>
-            </div>
-            <div>
-                <h3>
-                <label for="sigout">SignOut  <i className="fa fa-chevron-right fa-xs"></i></label>
-                <input className="ml-2" id="signout" name="choice" type="radio"/>
-                </h3>
-            </div>
-            <div>
-                <h3>
-                <label for="leave">Leave    <i className="fa fa-chevron-right fa-xs"></i></label>
-                <input className="ml-4" id="leave" name="choice" type="radio"/>
-                </h3>
-            </div>
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              color="primary"
-              className={classes.submit}
-              onClick={time}
-              id={props.id}
-            >
-              Go!
-            </Button>
-            </form>
   </Paper>
   </Container>
   </Div>
@@ -115,15 +117,31 @@ const useStyles = makeStyles(theme => ({
 
        
         
-  function time(){
+  function signInTime(){
             var d = Date();
             var a = d.toString()
-               alert("User clicked button at => " + a);
-                console.log("User Date and Time => " + a);
-                
+                console.log("User Signed In => " + a);
+                var b = "SignIn Successful!"
+                document.getElementById('signin').innerHTML=b
+                document.getElementById('date').innerHTML=a
   }
-            
-            
+  function signOutTime(){
+    var d = Date();
+    var a = d.toString()
+        console.log("User Signed Out at => " + a);
+        var b = "SignOut Successful!"
+        document.getElementById('signout').innerHTML=b
+        document.getElementById('date').innerHTML=a
+}
+    
+function leaveTime(){
+    var d = Date();
+    var a = d.toString()
+        console.log("User Requested Leave at => " + a)
+        var b = "Your leave application is Successful and under review!"
+        document.getElementById('leave').innerHTML=b
+        document.getElementById('date').innerHTML=a
+}           
 
 }
 
