@@ -85,7 +85,7 @@ export default function SignUp(props) {
                 label="Last Name"
                 name="lastName"
                 autoComplete="lname"
-                value={lastname} onChange={e=>setLastname(e.target.value)}
+                value={lastname.toUpperCase()} onChange={e=>setLastname(e.target.value)}
               />
             </Grid>
             <Grid item xs={12}>

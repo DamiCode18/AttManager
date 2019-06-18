@@ -19,11 +19,11 @@ const config = {
           this.db = app.firestore()
       }
 
-      async login(email, password, firstname, lastname){
+      async login(email, password){
           await this.auth.signInWithEmailAndPassword(email, password)
-          return this.auth.currentUser.updateProfile({
-            displayName: firstname + " " + lastname 
-        })
+    //     //   return this.auth.currentUser.updateProfile({
+    //     //     displayName:  
+    //     // })
       }
 
       logout(){
@@ -32,7 +32,7 @@ const config = {
       async register(email, firstname, lastname, password){
           await this.auth.createUserWithEmailAndPassword(email, password)
           return this.auth.currentUser.updateProfile({
-              displayName: firstname + " " + lastname 
+              displayName: firstname + " " + lastname
           })
         }
        isInitialized(){
@@ -40,9 +40,9 @@ const config = {
                this.auth.onAuthStateChanged(resolve)
            })
        }
-       
        getCurrentUsername(){
-           return this.auth.currentUser.displayName
+           return this.auth.currentUser && this.auth.currentUser.displayName
+           
        }
       }
   

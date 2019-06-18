@@ -45,7 +45,7 @@ const useStyles = makeStyles(theme => ({
     
         if(!firebase.getCurrentUsername()){
             alert("Please login first")
-            props.history.replace('/Login')
+            props.history.replace('/login')
             return null
         }
     return (
@@ -57,11 +57,21 @@ const useStyles = makeStyles(theme => ({
             <VerifiedUserOutlined />
           </Avatar>
           <Typography component="h1" variant="h5">
-            Welcome {firebase.getCurrentUsername()}
+            Welcome, {firebase.getCurrentUsername().toUpperCase()}
           </Typography>
-          <Typography component="h1" variant="h5">
-            {/* Username: {displayName ? `"${displayName}"`: <CircularProgress/>} */}
-          </Typography>
+          <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              color="primary"
+              className={classes.submit}
+              onClick={logout}
+            >
+              Logout
+            </Button>
+          {/* <Typography component="h1" variant="h5">
+            Username: {displayName ? `"${displayName}"`: <CircularProgress/>}
+          </Typography> */}
             <form onSubmit={e=>e.preventDefault() && false}>
             <div>
                 <h3>
@@ -96,8 +106,12 @@ const useStyles = makeStyles(theme => ({
   </Paper>
   </Container>
   </Div>
-  );
+  )
 
+  async function logout(){
+                await firebase.logout()
+                props.history.push('/')
+}
 
        
         
@@ -107,9 +121,9 @@ const useStyles = makeStyles(theme => ({
                alert("User clicked button at => " + a);
                 console.log("User Date and Time => " + a);
                 
-            }
+  }
             
- 
+            
 
 }
 
