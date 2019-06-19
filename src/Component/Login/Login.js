@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 // import Div from '../HOC/Div'
-import {Switch, Route, withRouter} from 'react-router-dom'
+import {withRouter} from 'react-router-dom'
 import './Login.css'
 // import Home from '../Home/Home'
 // import firebase from 'firebase'

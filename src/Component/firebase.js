@@ -32,7 +32,7 @@ const config = {
       async register(email, firstname, lastname, password){
           await this.auth.createUserWithEmailAndPassword(email, password)
           return this.auth.currentUser.updateProfile({
-              displayName: firstname + " " + lastname
+             displayName: firstname.charAt(0).toUpperCase() + firstname.slice(1) + ", " + lastname.toUpperCase()
           })
         }
        isInitialized(){

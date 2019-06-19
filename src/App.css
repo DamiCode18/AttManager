@@ -1,7 +1,8 @@
 .App {
   text-align: center;
-  
+
 }
+
 /* body{
   background: url(Images/bg.jpg);
   background-repeat: no-repeat;
@@ -9,7 +10,7 @@
   height: 100%;
 } */
 
-#loader{
+#loader {
   position: fixed;
   top: 0;
   left: 0;

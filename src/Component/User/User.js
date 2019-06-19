@@ -1,8 +1,6 @@
 import React from 'react'
-import {Link, Switch, Route, withRouter} from 'react-router-dom'
-import Div from '../HOC/Div'
+import Div from '../HOC/Div';
 import './User.css'
-// import Navbar from '../Navbar/Navbar'
 import firebase from '../firebase'
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
@@ -12,7 +10,6 @@ import VerifiedUserOutlined from '@material-ui/icons/VerifiedUserOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-// import Radio from '@material-ui/core/Radio';
 
 
 const useStyles = makeStyles(theme => ({
@@ -57,7 +54,7 @@ const useStyles = makeStyles(theme => ({
             <VerifiedUserOutlined />
           </Avatar>
           <Typography component="h1" variant="h5">
-            Welcome, {firebase.getCurrentUsername().toUpperCase()}
+            Welcome {firebase.getCurrentUsername()}
           </Typography>
           <p id="signin"></p>
           <p id="signout"></p>

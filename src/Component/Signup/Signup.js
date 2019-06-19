@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import './Signup.css'
 // import {withRouter} from 'react-router-dom'
 // import * as moment from 'moment'
@@ -18,39 +18,39 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 
 const useStyles = makeStyles(theme => ({
-    '@global': {
-      body: {
-        backgroundColor: theme.palette.common.white,
-      },
+  '@global': {
+    body: {
+      backgroundColor: theme.palette.common.white,
     },
-    paper: {
-      marginTop: theme.spacing(12),
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-    },
-    avatar: {
-      margin: theme.spacing(1),
-      backgroundColor: theme.palette.secondary.main,
-    },
-    form: {
-      width: '100%', // Fix IE 11 issue.
-      marginTop: theme.spacing(3),
-    },
-    submit: {
-      margin: theme.spacing(3, 0, 2),
-    },
-  }));
-  
-export default function SignUp(props) {
-    const classes = useStyles();
-        const[email, setEmail] = useState('')
-        const [firstname, setFirstname] = useState('')
-        const [lastname, setLastname] = useState('')
-        const [password, setPassword] = useState('')
+  },
+  paper: {
+    marginTop: theme.spacing(12),
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
+  avatar: {
+    margin: theme.spacing(1),
+    backgroundColor: theme.palette.secondary.main,
+  },
+  form: {
+    width: '100%', // Fix IE 11 issue.
+    marginTop: theme.spacing(3),
+  },
+  submit: {
+    margin: theme.spacing(3, 0, 2),
+  },
+}));
 
-        return(
-<Container component="main" maxWidth="xs">
+export default function SignUp(props) {
+  const classes = useStyles();
+  const [email, setEmail] = useState('')
+  const [firstname, setFirstname] = useState('')
+  const [lastname, setLastname] = useState('')
+  const [password, setPassword] = useState('')
+
+  return (
+    <Container component="main" maxWidth="xs">
       <CssBaseline />
       <Paper className={classes.paper}>
         <Avatar className={classes.avatar}>
@@ -60,8 +60,8 @@ export default function SignUp(props) {
           Sign up
         </Typography>
         <form
-        onSubmit={e=>e.preventDefault() && false}
-        className={classes.form}>
+          onSubmit={e => e.preventDefault() && false}
+          className={classes.form}>
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
               <TextField
@@ -73,7 +73,7 @@ export default function SignUp(props) {
                 id="firstName"
                 label="First Name"
                 autoFocus
-                value={firstname} onChange={e=>setFirstname(e.target.value)}
+                value={firstname} onChange={e => setFirstname(e.target.value)}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -85,7 +85,7 @@ export default function SignUp(props) {
                 label="Last Name"
                 name="lastName"
                 autoComplete="lname"
-                value={lastname.toUpperCase()} onChange={e=>setLastname(e.target.value)}
+                value={lastname} onChange={e => setLastname(e.target.value)}
               />
             </Grid>
             <Grid item xs={12}>
@@ -97,7 +97,7 @@ export default function SignUp(props) {
                 label="Email Address"
                 name="email"
                 autoComplete="email"
-                value={email} onChange={e=>setEmail(e.target.value)}
+                value={email} onChange={e => setEmail(e.target.value)}
               />
             </Grid>
             <Grid item xs={12}>
@@ -110,7 +110,7 @@ export default function SignUp(props) {
                 type="password"
                 id="password"
                 autoComplete="current-password"
-                value={password} onChange={e=>setPassword(e.target.value)}
+                value={password} onChange={e => setPassword(e.target.value)}
               />
             </Grid>
           </Grid>
@@ -134,17 +134,24 @@ export default function SignUp(props) {
         </form>
       </Paper>
     </Container>
-        );
+  );
 
-        async function onRegister(){
-         try{
-             await firebase.register(email, firstname, lastname, password)
 
-         props.history.push('/Login')
-         } catch(error){
-             alert("Invalid Signup! All input feilds required")
-             props.history.push('/Signup')
-         }   
-         
-   } 
-        }
+  async function onRegister() {
+    var check = email;
+    var substring = "@techsavvyng.com"
+    if (check.indexOf(substring) === -1) {
+      props.history.replace('/Signup')
+      return alert("invalid email")
+    }
+    try {
+      await firebase.register(email, firstname, lastname, password)
+
+      props.history.push('/Login')
+    } catch (error) {
+      alert("Invalid Signup! All input feilds required")
+      props.history.push('/Signup')
+    }
+
+  }
+}
