@@ -13,7 +13,7 @@ const Navbar = () => {
         <nav className="navbar navbar-expand-sm fixed-top navbar-dark bg-dark">
           <div className="container">
             <a className="navbar-brand" id="brand" href="/">
-              SAVVY
+            saVVyTimer!
             </a>
             <button
               className="navbar-toggler"
