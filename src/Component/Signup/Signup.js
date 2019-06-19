@@ -150,8 +150,8 @@ export default function SignUp(props) {
 
       props.history.push('/Login')
     } catch (error) {
-      alert("Invalid Signup! All input feilds required")
       props.history.push('/Signup')
+      document.getElementById('res').innerHTML = "All inputs field required"
     }
 
   }

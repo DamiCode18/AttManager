@@ -56,9 +56,7 @@ const useStyles = makeStyles(theme => ({
           <Typography component="h1" variant="h5">
             Welcome {firebase.getCurrentUsername()}
           </Typography>
-          <p id="signin"></p>
-          <p id="signout"></p>
-          <p id="leave"></p>
+          <p id="choice"></p>
           <p id="date"></p>
             <form onSubmit={e=>e.preventDefault() && false}>
             <Button
@@ -112,14 +110,12 @@ const useStyles = makeStyles(theme => ({
                 props.history.push('/')
 }
 
-       
-        
   function signInTime(){
             var d = Date();
             var a = d.toString()
                 console.log("User Signed In => " + a);
                 var b = "SignIn Successful!"
-                document.getElementById('signin').innerHTML=b
+                document.getElementById('choice').innerHTML=b
                 document.getElementById('date').innerHTML=a
   }
   function signOutTime(){
@@ -127,7 +123,7 @@ const useStyles = makeStyles(theme => ({
     var a = d.toString()
         console.log("User Signed Out at => " + a);
         var b = "SignOut Successful!"
-        document.getElementById('signout').innerHTML=b
+        document.getElementById('choice').innerHTML=b
         document.getElementById('date').innerHTML=a
 }
     
@@ -136,7 +132,7 @@ function leaveTime(){
     var a = d.toString()
         console.log("User Requested Leave at => " + a)
         var b = "Your leave application is Successful and under review!"
-        document.getElementById('leave').innerHTML=b
+        document.getElementById('choice').innerHTML=b
         document.getElementById('date').innerHTML=a
 }           
 
