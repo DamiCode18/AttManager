@@ -124,7 +124,7 @@ export default function SignUp(props) {
           >
             Sign Up
           </Button>
-          <Grid container justify="flex-end">
+          <Grid container justify="center">
             <Grid item>
               <Link href="/Login" variant="body2">
                 Already have an account? Sign in
@@ -132,6 +132,7 @@ export default function SignUp(props) {
             </Grid>
           </Grid>
         </form>
+        <b><p id="res"></p></b>
       </Paper>
     </Container>
   );
@@ -142,7 +143,7 @@ export default function SignUp(props) {
     var substring = "@techsavvyng.com"
     if (check.indexOf(substring) === -1) {
       props.history.replace('/Signup')
-      return alert("invalid email")
+      return document.getElementById('res').innerHTML = "Invalid Signup Email"
     }
     try {
       await firebase.register(email, firstname, lastname, password)

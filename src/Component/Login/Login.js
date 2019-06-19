@@ -104,7 +104,7 @@ const useStyles = makeStyles(theme => ({
             >
               Sign In
             </Button>
-            <Grid container>
+            <Grid container justify="center">
               <Grid item>
                 <Link href="/Signup" variant="body2">
                   {"Don't have an account? Sign Up"}
@@ -112,6 +112,7 @@ const useStyles = makeStyles(theme => ({
               </Grid>
             </Grid>
           </form>
+          <b><p id="resp"></p></b>
   </Paper>
   </Container>
   );
@@ -121,7 +122,7 @@ const useStyles = makeStyles(theme => ({
           props.history.replace('/User');
 
     } catch(error){
-        alert("Invalid Login Credentials!")
+        document.getElementById('resp').innerHTML="Invalid Login Credentials!"
         props.history.replace('/Login')
     }
 
