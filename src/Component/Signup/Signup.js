@@ -59,6 +59,7 @@ export default function SignUp(props) {
         <Typography component="h1" variant="h5">
           Sign up
         </Typography>
+        <b><p id="res" style={{ color: 'red' }}></p></b>
         <form
           onSubmit={e => e.preventDefault() && false}
           className={classes.form}>
@@ -132,7 +133,6 @@ export default function SignUp(props) {
             </Grid>
           </Grid>
         </form>
-        <b><p id="res"></p></b>
       </Paper>
     </Container>
   );
@@ -147,12 +147,16 @@ export default function SignUp(props) {
     }
     try {
       await firebase.register(email, firstname, lastname, password)
-
-      props.history.push('/Login')
+        props.history.push('/Login')
     } catch (error) {
+      if (email.indexOf(email) !== -1) {
+        props.history.replace('/Signup')
+        return document.getElementById('res').innerHTML = "User Already Exist"
+      }
       props.history.push('/Signup')
       document.getElementById('res').innerHTML = "All inputs field required"
     }
+
 
   }
 }

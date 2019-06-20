@@ -13,40 +13,40 @@ import Container from '@material-ui/core/Container';
 
 
 const useStyles = makeStyles(theme => ({
-    '@global': {
-      body: {
-        backgroundColor: theme.palette.common.white,
-      },
+  '@global': {
+    body: {
+      backgroundColor: theme.palette.common.white,
     },
-    paper: {
-      marginTop: theme.spacing(20),
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-    },
-    avatar: {
-      margin: theme.spacing(1),
-      backgroundColor: theme.palette.secondary.main,
-    },
-    form: {
-      width: '100%', // Fix IE 11 issue.
-      marginTop: theme.spacing(1),
-    },
-    submit: {
-      margin: theme.spacing(3, 0, 2),
-    },
-  }));
+  },
+  paper: {
+    marginTop: theme.spacing(20),
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
+  avatar: {
+    margin: theme.spacing(1),
+    backgroundColor: theme.palette.secondary.main,
+  },
+  form: {
+    width: '100%', // Fix IE 11 issue.
+    marginTop: theme.spacing(1),
+  },
+  submit: {
+    margin: theme.spacing(3, 0, 2),
+  },
+}));
 
-      function User(props) {
-    const classes = useStyles();
-    
-        if(!firebase.getCurrentUsername()){
-            alert("Please login first")
-            props.history.replace('/login')
-            return null
-        }
-    return (
-        <Div>
+function User(props) {
+  const classes = useStyles();
+
+  if (!firebase.getCurrentUsername()) {
+    alert("Please login first")
+    props.history.replace('/login')
+    return null
+  }
+  return (
+    <Div>
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <Paper className={classes.paper}>
@@ -58,7 +58,7 @@ const useStyles = makeStyles(theme => ({
           </Typography>
           <p id="choice"></p>
           <p id="date"></p>
-            <form onSubmit={e=>e.preventDefault() && false}>
+          <form onSubmit={e => e.preventDefault() && false}>
             <Button
               type="submit"
               variant="contained"
@@ -89,52 +89,52 @@ const useStyles = makeStyles(theme => ({
             >
               Leave
             </Button>
-            </form>
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              color="primary"
-              className={classes.submit}
-              onClick={logout}
-            >
-              Logout
+          </form>
+          <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            color="primary"
+            className={classes.submit}
+            onClick={logout}
+          >
+            Logout
             </Button>
-  </Paper>
-  </Container>
-  </Div>
+        </Paper>
+      </Container>
+    </Div>
   )
 
-  async function logout(){
-                await firebase.logout()
-                props.history.push('/')
-}
-
-  function signInTime(){
-            var d = Date();
-            var a = d.toString()
-                console.log("User Signed In => " + a);
-                var b = "SignIn Successful!"
-                document.getElementById('choice').innerHTML=b
-                document.getElementById('date').innerHTML=a
+  async function logout() {
+    await firebase.logout()
+    props.history.push('/')
   }
-  function signOutTime(){
+
+  function signInTime() {
     var d = Date();
     var a = d.toString()
-        console.log("User Signed Out at => " + a);
-        var b = "SignOut Successful!"
-        document.getElementById('choice').innerHTML=b
-        document.getElementById('date').innerHTML=a
-}
-    
-function leaveTime(){
+    console.log("User Signed In => " + a);
+    var b = "SignIn Successful!"
+    document.getElementById('choice').innerHTML = b
+    document.getElementById('date').innerHTML = a
+  }
+  function signOutTime() {
     var d = Date();
     var a = d.toString()
-        console.log("User Requested Leave at => " + a)
-        var b = "Your leave application is Successful and under review!"
-        document.getElementById('choice').innerHTML=b
-        document.getElementById('date').innerHTML=a
-}           
+    console.log("User Signed Out at => " + a);
+    var b = "SignOut Successful!"
+    document.getElementById('choice').innerHTML = b
+    document.getElementById('date').innerHTML = a
+  }
+
+  function leaveTime() {
+    var d = Date();
+    var a = d.toString()
+    console.log("User Requested Leave at => " + a)
+    var b = "Your leave application is Successful and under review!"
+    document.getElementById('choice').innerHTML = b
+    document.getElementById('date').innerHTML = a
+  }
 
 }
 

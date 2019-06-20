@@ -13,8 +13,8 @@ const Navbar = () => {
         <nav className="navbar navbar-expand-sm fixed-top navbar-dark bg-dark">
           <div className="container">
             <a className="navbar-brand" id="brand" href="/">
-            saVVyTimer!
-            </a>
+              saVVyTimer!
+              </a>
             <button
               className="navbar-toggler"
               id="toggle"
@@ -32,13 +32,13 @@ const Navbar = () => {
                 <li className="nav-item active">
                   <Link className="nav-link" to="/Login">
                     Login
-                    <span className="sr-only" />
+                      <span className="sr-only" />
                   </Link>
                 </li>
                 <li className="nav-item">
                   <Link to="/Signup" className="nav-link">
                     Signup
-                  </Link>
+                    </Link>
                 </li>
               </ul>
             </div>

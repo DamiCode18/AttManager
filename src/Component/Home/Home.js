@@ -1,8 +1,7 @@
 import React from 'react'
-import {
-  Link
-} from 'react-router-dom'
-import './Home.css'
+import { Link } from 'react-router-dom'
+import './Home.css' 
+import Div from '../HOC/Div'
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper'
@@ -45,6 +44,7 @@ function Home(props) {
 
 
   return ( 
+    <Div>
     <Container component = "main"
     maxWidth = "xs">
     <CssBaseline/>
@@ -74,6 +74,7 @@ function Home(props) {
         </Button> 
         </Paper >
          </Container>
+         </Div>
   );
 
 
