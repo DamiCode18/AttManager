@@ -21,9 +21,6 @@ class Firebase {
 
     async login(email, password) {
         await this.auth.signInWithEmailAndPassword(email, password)
-        //     //   return this.auth.currentUser.updateProfile({
-        //     //     displayName:  
-        //     // })
     }
 
     logout() {

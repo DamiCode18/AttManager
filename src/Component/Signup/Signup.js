@@ -1,15 +1,11 @@
 import React, { useState } from 'react'
 import './Signup.css'
-// import {withRouter} from 'react-router-dom'
-// import * as moment from 'moment'
-// import firebase from 'firebase'
 import firebase from '../firebase'
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import TextField from '@material-ui/core/TextField';
-// import Checkbox from '@material-ui/core/Checkbox';
+import TextField from '@material-ui/core/TextField'
 import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
@@ -147,16 +143,12 @@ export default function SignUp(props) {
     }
     try {
       await firebase.register(email, firstname, lastname, password)
-        props.history.push('/Login')
+      props.history.replace('/Login')
     } catch (error) {
-      if (email.indexOf(email) !== -1) {
         props.history.replace('/Signup')
-        return document.getElementById('res').innerHTML = "User Already Exist"
-      }
-      props.history.push('/Signup')
-      document.getElementById('res').innerHTML = "All inputs field required"
+        document.getElementById('res').innerHTML = "All inputs field required"  
     }
 
-
   }
+
 }
